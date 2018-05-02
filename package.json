@@ -1,0 +1,30 @@
+{
+  "name": "optimize-detection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy": "webpack ; cp index.html public/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nao20010128nao/optimize-detection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nao20010128nao/optimize-detection/issues"
+  },
+  "homepage": "https://github.com/nao20010128nao/optimize-detection#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

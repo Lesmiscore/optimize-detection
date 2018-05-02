@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '10'
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  local-dir: public/
+  keep-history: true
+  on:
+    branch: master
+script:
+- npm run copy
+env:
+  global:
+    secure: bUdIWa333Qxidp3ggGJ0N7t5e9j6vIqjxCGqMI+IUJf5Vytv7siOJB7PclztYnvqzzNvWlAvpyRLPloOkp6FxY7R/CWJAmokYLfyS/biH4455tuLpeiTLjgvrFCtk87fo/KiAe5FyrAIityNCs+g278Peu+L5D1ZTZAs4IL2o8IvnI8/S+a3wzVSPyYkJd29l50UPqDw9mBmKgCFwLo0zflbqZkvwr5yfhz3sU7as2oqRA5UWTBMGr4Kj+K9w85a4QSIdBzQk3UbaoZgYr7yR6f93c9WZ8IhjPcJt6htzMAGrdl2uUksfB1LTtSnOdu8CegzPhjZecgVkCcWsAc5ModLNHViUoQwsztGeQfxg9MQ9F/VV4E0OzDnzc9fV4lPYvCinSENPxb2sFj7m21fY4Q8sRXmFvuR4++Te3U3+2Wv1jj8i+4vj1qz4ExI0ZNpxuICvypgB5v7Iw2LQO4yjqn8cHX5mSOzRjUGzuTUqFYBtrHujXwSYaHOwen6qOQMeb2e6STKyX6UmDJL9QjVS8YiYzKPFNN5qdGjnr/Bl7FQF8Rl0MnbNQACyZ+3ZGXimIy2ocbSGYhtsvC9aI+3QcqCF5zciouYBh9OyFBz5LWC3TAXctnpcprg0bbtrUDQLFcglTcB/geQNA/neKid8LKgQL1Yktrbr/3z8AEiu14=
