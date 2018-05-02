@@ -14,14 +14,33 @@
         const $ = index.$;
 
         $(() => {
+            const entries = $("id.entries");
             fileList()
-                .then(console.log);
+                .then(table => {
+                    let promises = [];
+                    for (let i in table) {
+                        const hash = i.hash;
+                        const file = i.file;
+                        // create html
+                        let html = $(
+                            `<div id="${hash}">` +
+                            '<hr />' +
+                            '<div id="filename">ファイル名: ' + file + '</div>' +
+                            '<div id="correcthash">計算済みハッシュ値: ' + hash + '</div>' +
+                            '<div id="computed">ダウンロードしたファイルのハッシュ値: ' + '</div>' +
+                            '<div id="isok">判定中</div>' +
+                            '</div>'
+                        );
+                        html.appendTo(entries);
+                    }
+                });
         });
     </script>
 </head>
 
 <body>
     <p>通信中の画像の改竄を検知します</p>
+    <div id="entries"></div>
 </body>
 
 </html>
