@@ -46,8 +46,10 @@
                         hashDisplay.text(newHash);
                     } finally {
                         if (hash == newHash) {
+                            console.log("Not modified");
                             isOK.text("改竄なし").toggleClass("valid");
                         } else {
+                            console.log("!!!MODIFIED!!!");
                             isOK.text("改竄確認").toggleClass("invalid");
                         }
                     }
@@ -60,6 +62,7 @@
 
         $(() => {
             const entries = $("div#entries");
+            $("code#connmethod").text(location.href.split("://")[0]);
             fileList()
                 .then(table => {
                     console.log(table);
@@ -85,7 +88,13 @@
 
 <body>
     <p>通信中の画像の改竄を検知します</p>
+    <p>通信方式:
+        <code id="connmethod"></code>
+    </p>
     <div id="entries"></div>
+    <hr />
+    <p>もし、赤く&quot;改竄確認&quot;と表示された場合、&quot;通信の最適化&quot;と称する
+        <b>悪質な</b>通信改竄行為が行われている可能性があります。</p>
 </body>
 
 </html>
