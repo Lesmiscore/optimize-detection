@@ -23,6 +23,7 @@
         const $ = index.$;
 
         function startValidate(file, hash) {
+            console.log(`Attempting to calculate hash for ${file}`);
             fetch(file)
                 .then(x => x.blob())
                 .then(sha256)
@@ -59,8 +60,8 @@
                             `<div id="${hash}">` +
                             '<hr />' +
                             `<div id="filename">ファイル名: <code>${file}</code></div>` +
-                            `<div id="correcthash">計算済みハッシュ値: <code>${hash}</code></div>` +
-                            '<div id="computed">ダウンロードしたファイルのハッシュ値: <code></code></div>' +
+                            `<div id="correcthash">計算済みハッシュ値:<br /><code>${hash}</code></div>` +
+                            '<div id="computed">ダウンロードしたファイルのハッシュ値:<br /><code></code></div>' +
                             '<div id="isok">判定中</div>' +
                             '</div>';
                         entries.append(html);
