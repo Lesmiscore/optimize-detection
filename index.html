@@ -35,8 +35,9 @@
 
         function startValidate(file, hash) {
             console.log(`Attempting to calculate hash for ${file}`);
-            const isOK = $(`div#${hash} > #isok`);
             const hashDisplay = $(`div#${hash} > #computed > code`);
+            const isOK = $(`div#${hash} > #isok`);
+            console.log(isOK);
             fetch(file)
                 .then(x => x.arrayBuffer())
                 .then(sha256)
@@ -46,10 +47,8 @@
                         hashDisplay.text(newHash);
                     } finally {
                         if (hash == newHash) {
-                            console.log("Not modified");
                             isOK.text("改竄なし").toggleClass("valid");
                         } else {
-                            console.log("!!!MODIFIED!!!");
                             isOK.text("改竄確認").toggleClass("invalid");
                         }
                     }
