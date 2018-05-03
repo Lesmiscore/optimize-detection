@@ -25,7 +25,8 @@
         function startValidate(file, hash) {
             console.log(`Attempting to calculate hash for ${file}`);
             fetch(file)
-                .then(x => x.blob())
+                .then(x => x.arrayBuffer())
+                .then(x => new DataView(x))
                 .then(sha256)
                 .then(newHash => {
                     console.log(newHash);
