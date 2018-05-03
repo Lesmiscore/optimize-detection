@@ -34,15 +34,16 @@
         }
 
         function startValidate(file, hash) {
+            const parent = hash.substring(0, 8);
             console.log(`Attempting to calculate hash for ${file}`);
-            const hashDisplay = $(`div#${hash} > #computed > code`);
-            const isOK = $(`div#${hash} > #isok`);
+            const hashDisplay = $(`div#${parent} > #computed > code`);
+            const isOK = $(`div#${parent} > #isok`);
             console.log(isOK);
             fetch(file)
                 .then(x => x.arrayBuffer())
                 .then(sha256)
                 .then(newHash => {
-                    console.log(newHash);
+                    console.log(`Hash for ${file} was ${newHash}`);
                     try {
                         hashDisplay.text(newHash);
                     } finally {
@@ -69,8 +70,9 @@
                     for (let key in table) {
                         const hash = table[key].hash;
                         const file = table[key].file;
+                        const parent = hash.substring(0, 8);
                         let html =
-                            `<div id="${hash}">` +
+                            `<div id="${parent}">` +
                             '<hr />' +
                             `<div id="filename">ファイル名: <code>${file}</code></div>` +
                             `<div id="correcthash">計算済みハッシュ値:<br /><code>${hash}</code></div>` +
