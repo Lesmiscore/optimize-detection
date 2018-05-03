@@ -1,10 +1,10 @@
-const crypto = require("crypto");
+const chash = require("create-hash");
 const $ = require("jquery");
 
 function sha256(blob) {
     return new Promise((resolve, reject) => {
         try {
-            resolve(crypto.createHash("sha256").update(blob).digest("hex"));
+            resolve(chash("sha256").update(blob).digest("hex"));
         } catch (e) {
             reject(e);
         }
