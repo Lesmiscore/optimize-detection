@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy": "browserify -r jquery -r ./index.js:od-core -o public/bundle.js ; cp index.html public/"
+    "copy": "browserify -r ./index.js:od-core -o public/bundle.js ; cp index.html public/"
   },
   "repository": {
     "type": "git",
