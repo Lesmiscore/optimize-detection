@@ -19,9 +19,9 @@
                 .then(table => {
                     console.log(table);
                     let promises = [];
-                    for (let i in table) {
-                        const hash = i.hash;
-                        const file = i.file;
+                    for (let key in table) {
+                        const hash = table[key].hash;
+                        const file = table[key].file;
                         let html =
                             `<div id="${hash}">` +
                             '<hr />' +
