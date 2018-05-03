@@ -1,5 +1,4 @@
 const chash = require("create-hash");
-const $ = require("jquery");
 
 function sha256(blob) {
     return new Promise((resolve, reject) => {
@@ -18,4 +17,4 @@ function fileList() {
         .then(x => x.map(y => y.split("  ")).map(y => ({ "hash": y[0], "file": y[1] })));
 }
 
-module.exports = { sha256, fileList, $ };
+module.exports = { sha256, fileList };

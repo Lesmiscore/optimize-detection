@@ -7,6 +7,7 @@
     <title>画像改竄検知</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
         .valid {
             color: #060;
@@ -17,6 +18,7 @@
         }
     </style>
     <script>
+        console.log($);
         const index = require("od-core");
         const sha256 = index.sha256;
         const fileList = index.fileList;
@@ -29,8 +31,8 @@
                 .then(sha256)
                 .then(newHash => {
                     console.log(newHash);
-                    index.$(`div#${hash} > #computed > code`).text(newHash);
-                    const isOK = index.$(`div#${hash} > #isok`);
+                    $(`div#${hash} > #computed > code`).text(newHash);
+                    const isOK = $(`div#${hash} > #isok`);
                     if (hash == newHash) {
                         isOK.text("改竄なし");
                         isOK.toggleClass("valid");
@@ -41,14 +43,14 @@
                 })
                 .catch(err => {
                     console.log(err);
-                    const isOK = index.$(`div#${hash} > #isok`);
+                    const isOK = $(`div#${hash} > #isok`);
                     isOK.text("エラー");
                     isOK.toggleClass("invalid");
                 });
         }
 
-        index.$(() => {
-            const entries = index.$("div#entries");
+        $(() => {
+            const entries = $("div#entries");
             fileList()
                 .then(table => {
                     console.log(table);
