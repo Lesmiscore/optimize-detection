@@ -2,15 +2,13 @@ const crypto = require("crypto");
 const $ = require("jquery");
 
 function sha256(blob) {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         try {
-            const sha = crypto.createHash("sha256");
-            sha.update(blob);
-            resolve(sha.digest("hex"));
+            resolve(crypto.createHash("sha256").update(blob).digest("hex"));
         } catch (e) {
             reject(e);
         }
-    })
+    });
 }
 
 function fileList() {

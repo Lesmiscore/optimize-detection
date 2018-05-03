@@ -27,6 +27,7 @@
                 .then(x => x.blob())
                 .then(sha256)
                 .then(newHash => {
+                    console.log(newHash);
                     $(`div#${hash} > #computed > code`).text(newHash);
                     const isOK = $(`div#${hash} > #isok`);
                     if (hash == newHash) {
