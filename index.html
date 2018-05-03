@@ -7,6 +7,7 @@
     <title>画像改竄検知</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./bundle.js"></script>
+    <script src="http://vibornoff.com/asmcrypto.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <style>
         .valid {
@@ -20,14 +21,23 @@
     <script>
         console.log($);
         const index = require("od-core");
-        const sha256 = index.sha256;
+        //const sha256 = index.sha256;
         const fileList = index.fileList;
+
+        function sha256(blob) {
+            return new Promise((resolve, reject) => {
+                try {
+                    resolve(asmCrypto.SHA256.hex(blob));
+                } catch (e) {
+                    reject(e);
+                }
+            });
+        }
 
         function startValidate(file, hash) {
             console.log(`Attempting to calculate hash for ${file}`);
             fetch(file)
                 .then(x => x.arrayBuffer())
-                .then(x => new DataView(x))
                 .then(sha256)
                 .then(newHash => {
                     console.log(newHash);
