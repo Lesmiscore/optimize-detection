@@ -42,11 +42,14 @@
                 .then(sha256)
                 .then(newHash => {
                     console.log(newHash);
-                    hashDisplay.text(newHash);
-                    if (hash == newHash) {
-                        isOK.text("改竄なし").toggleClass("valid");
-                    } else {
-                        isOK.text("改竄確認").toggleClass("invalid");
+                    try {
+                        hashDisplay.text(newHash);
+                    } finally {
+                        if (hash == newHash) {
+                            isOK.text("改竄なし").toggleClass("valid");
+                        } else {
+                            isOK.text("改竄確認").toggleClass("invalid");
+                        }
                     }
                 })
                 .catch(err => {
