@@ -14,24 +14,23 @@
         const $ = index.$;
 
         $(() => {
-            const entries = $("id#entries");
+            const entries = $("div#entries");
             fileList()
                 .then(table => {
+                    console.log(table);
                     let promises = [];
                     for (let i in table) {
                         const hash = i.hash;
                         const file = i.file;
-                        // create html
-                        let html = $(
+                        let html =
                             `<div id="${hash}">` +
                             '<hr />' +
-                            '<div id="filename">ファイル名: ' + file + '</div>' +
-                            '<div id="correcthash">計算済みハッシュ値: ' + hash + '</div>' +
+                            `<div id="filename">ファイル名: ${file}</div>` +
+                            `<div id="correcthash">計算済みハッシュ値: ${hash}</div>` +
                             '<div id="computed">ダウンロードしたファイルのハッシュ値: ' + '</div>' +
                             '<div id="isok">判定中</div>' +
-                            '</div>'
-                        );
-                        html.appendTo(entries);
+                            '</div>';
+                        entries.append(html);
                     }
                 });
         });
