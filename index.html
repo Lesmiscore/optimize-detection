@@ -36,8 +36,8 @@
         function startValidate(file, hash) {
             const parent = hash.substring(0, 8);
             console.log(`Attempting to calculate hash for ${file}`);
-            const hashDisplay = $(`div#${parent} > #computed > code`);
-            const isOK = $(`div#${parent} > #isok`);
+            const hashDisplay = $(`div#${parent} #computed code`);
+            const isOK = $(`div#${parent} #isok`);
             console.log(isOK);
             fetch(file)
                 .then(x => x.arrayBuffer())
