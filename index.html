@@ -21,7 +21,6 @@
     <script>
         console.log($);
         const index = require("od-core");
-        //const sha256 = index.sha256;
         const fileList = index.fileList;
 
         function sha256(blob) {
@@ -36,26 +35,23 @@
 
         function startValidate(file, hash) {
             console.log(`Attempting to calculate hash for ${file}`);
+            const isOK = $(`div#${hash} > #isok`);
+            const hashDisplay = $(`div#${hash} > #computed > code`);
             fetch(file)
                 .then(x => x.arrayBuffer())
                 .then(sha256)
                 .then(newHash => {
                     console.log(newHash);
-                    $(`div#${hash} > #computed > code`).text(newHash);
-                    const isOK = $(`div#${hash} > #isok`);
+                    hashDisplay.text(newHash);
                     if (hash == newHash) {
-                        isOK.text("改竄なし");
-                        isOK.toggleClass("valid");
+                        isOK.text("改竄なし").toggleClass("valid");
                     } else {
-                        isOK.text("改竄確認");
-                        isOK.toggleClass("invalid");
+                        isOK.text("改竄確認").toggleClass("invalid");
                     }
                 })
                 .catch(err => {
                     console.log(err);
-                    const isOK = $(`div#${hash} > #isok`);
-                    isOK.text("エラー");
-                    isOK.toggleClass("invalid");
+                    isOK.text("エラー").toggleClass("invalid");
                 });
         }
 
