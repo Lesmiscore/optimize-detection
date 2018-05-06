@@ -21,16 +21,7 @@
     <script>
         const index = require("od-core");
         const fileList = index.fileList;
-
-        function sha256(blob) {
-            return new Promise((resolve, reject) => {
-                try {
-                    resolve(asmCrypto.SHA256.hex(blob));
-                } catch (e) {
-                    reject(e);
-                }
-            });
-        }
+        const sha256 = index.sha256;
 
         function startValidate(file, hash) {
             const parent = hash.substring(0, 8);

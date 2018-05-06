@@ -1,9 +1,9 @@
-const chash = require("create-hash");
+const asmCrypto = require("asmcrypto-lite");
 
 function sha256(blob) {
     return new Promise((resolve, reject) => {
         try {
-            resolve(chash("sha256").update(blob).digest("hex"));
+            resolve(asmCrypto.SHA256.hex(blob));
         } catch (e) {
             reject(e);
         }
